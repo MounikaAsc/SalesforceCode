@@ -1,0 +1,15 @@
+public class DashboardController 
+{
+   
+
+    Public List<Dashboard__C> lstUsers{get;set;}
+    
+    Public DashboardController()
+    {
+        lstusers = new List<Dashboard__C>();
+        
+        lstUsers = [Select id, Name, FirstName__C, LastName__C
+                                from Dashboard__C
+                                    Order by FirstName__C];
+    }
+}

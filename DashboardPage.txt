@@ -1,0 +1,16 @@
+<apex:page Controller="DashboardController" setup="false" sidebar="false" showHeader="true" tabStyle="Dashboard__c" >
+<apex:sectionHeader title="DASHBOARD" subtitle="All Users"/>
+<apex:form >
+    <apex:pageblock title="All users : (  {!lstUsers.size}  ) ">
+    
+        <apex:PageblockTable value="{!lstusers}" var="usr">
+            <apex:column headerValue="User Name"> 
+                <apex:outputlink value="/{!usr.id}" target="_blank"> {!usr.Name} </apex:outputlink>
+            </apex:column>
+            <apex:column value="{!usr.FirstName__c}"/>
+            <apex:column value="{!usr.LastName__c}"/>
+        </apex:PageblockTable>
+    
+    </apex:pageblock>
+</apex:form> 
+</apex:page>

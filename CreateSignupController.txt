@@ -1,0 +1,50 @@
+public class CreateSignupController 
+{
+    dashboard__C drecords;
+    
+    public CreateSignupController(ApexPages.StandardController controller) 
+    {
+        drecords = (dashboard__C) controller.GetRecord();
+    }
+
+    public string fName{get;set;}
+    public string lName{get;set;}
+    public string uName{get;set;}
+    public string password{get;set;}
+    public string cPassword{get;set;}
+    
+    public void SignUp()
+    {
+    
+        if(uName!= null && uName!= '')
+       {
+               if(password == cPassword)
+               {
+                    apexPages.AddMessage(new ApexPages.Message(ApexPages.severity.CONFIRM, 'Congratulations! you have signed up'));
+                    drecords.FirstName__C=fName;
+                    drecords.LastName__C=lName;
+                    drecords.Name=UName;
+                    drecords.Password__C=password;
+                    insert drecords;
+               }
+               else
+               {
+                    apexPages.AddMessage(new ApexPages.Message(ApexPages.severity.WARNING, 'Passwords do not match!!!'));
+               }
+        
+       }
+       
+       else
+       {
+                   apexPages.AddMessage(new ApexPages.Message(ApexPages.severity.WARNING, 'Username Field is mandatory'));
+
+       }
+        
+  }      
+    public PageReference GoToSignIn()
+    {
+    
+        PageReference pgRef = new PageReference('/apex/CreateSigninPage');
+        return pgRef.SetRedirect(True);
+    }
+}

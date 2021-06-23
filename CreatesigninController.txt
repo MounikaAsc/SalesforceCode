@@ -1,0 +1,33 @@
+public class CreateSigninController {
+
+    public string userName{get;set;}
+    public string pwd{get;set;}
+    public Boolean getInput {get;set;}
+    public Boolean ischeck {get;set;}
+    
+    public List<dashboard__c> ObjList{get; set;}
+    
+     public CreateSigninController() {
+       getInput = True;
+       ObjList = new List<Dashboard__C>();
+    }
+    
+    public PageReference searchUserName() 
+    {
+       getInput = False;
+        ObjList = [SELECT Id, Name,Password__c FROM Dashboard__c  WHERE Name =: userName];
+        if(!ObjList.isEmpty())
+        {
+           ischeck = true;
+            PageReference page = new PageReference('/apex/DashboardPage');
+            return page.setRedirect(true);
+
+        }
+        else
+        {
+            ischeck = false;
+            PageReference page = new PageReference('/apex/CreateSignupPage');
+            return page.setRedirect(true);
+        }
+     }
+ }

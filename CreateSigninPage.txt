@@ -1,0 +1,12 @@
+<apex:page Controller="CreateSigninController" setup="false" sidebar="false" showheader="true" tabStyle="Opportunity">
+<apex:sectionHeader title="Enter your sign in details" subtitle="Sign In"/>
+<apex:form >
+    <apex:pageblock >
+        <apex:pageBlockSection title="SIGN IN PAGE" columns="1">
+            <apex:inputText label="User Name: " html-placeholder="Enter User Name" value="{!userName}"/>
+            <apex:inputsecret label="Password: " html-placeholder="Enter Password" value="{!pwd}"/>
+            <apex:commandButton value="SIGN IN" action="{!searchUserName}"/>
+        </apex:pageBlockSection>
+    </apex:pageblock>
+</apex:form>
+</apex:page>
